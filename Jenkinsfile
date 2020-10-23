@@ -1,9 +1,9 @@
 pipeline {
-    agent {
-      node {
-        label "master"
-      } 
+    agent any
+    tools {
+        "org.jenkinsci.plugins.terraform.TerraformInstallation" "terraform-0.11.8"
     }
+
 
     stages {
       stage('fetch_latest_code') {
