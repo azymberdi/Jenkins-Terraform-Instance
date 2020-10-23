@@ -6,11 +6,6 @@ pipeline {
     
     publishChecks name: 'example', title: 'Pipeline Check', summary: 'check through pipeline', text: 'you can publish checks in pipeline script', detailsURL: 'https://github.com/jenkinsci/checks-api-plugin#pipeline-usage'
     
-    parameters {
-        string(name: 'WORKSPACE', defaultValue: 'development', description:'setting up workspace for terraform')
-    }
-   
-   
     environment {
         TF_HOME = tool('terraform-0.11.8')
         TF_IN_AUTOMATION = "true"
