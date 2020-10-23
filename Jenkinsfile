@@ -18,9 +18,9 @@ pipeline {
     }
     stages {
             
-        stage('PullSCM'){
-            git branch: "${params.release_name}, url: 'https://github.com:azymberdi/Jenkins-Terraform-Instance.git'
-                }
+        #stage('PullSCM'){
+           # git branch: "${params.release_name}, url: 'https://github.com:azymberdi/Jenkins-Terraform-Instance.git'
+               # }
         
         
         stage('TerraformInit'){
