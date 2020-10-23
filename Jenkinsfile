@@ -35,7 +35,7 @@ pipeline {
 
         stage('TerraformFormat'){
             steps {
-                dir('https://github.com/azymberdi/Jenkins-Terraform-Instance'){
+                dir('Jenkins-Terraform-Instance'){
                     sh "terraform fmt -list=true -write=false -diff=true -check=true"
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
 
         stage('TerraformValidate'){
             steps {
-                dir('https://github.com/azymberdi/Jenkins-Terraform-Instance'){
+                dir('Jenkins-Terraform-Instance'){
                     sh "terraform validate"
                 }
             }
@@ -51,7 +51,7 @@ pipeline {
 
         stage('TerraformPlan'){
             steps {
-                dir('https://github.com/azymberdi/Jenkins-Terraform-Instance'){
+                dir('Jenkins-Terraform-Instance'){
                     script {
                         try {
                             sh "terraform workspace new ${params.WORKSPACE}"
@@ -77,7 +77,7 @@ pipeline {
                          currentBuild.result = 'UNSTABLE'
                     }
                     if(apply){
-                        dir('https://github.com/azymberdi/Jenkins-Terraform-Instance'){
+                        dir('Jenkins-Terraform-Instance'){
                             unstash "terraform-plan"
                             sh 'terraform apply terraform.tfplan'
                         }
