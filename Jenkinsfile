@@ -3,6 +3,15 @@ pipeline {
     tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "terraform-0.11.8"
     }
+    
+    properties([
+        parameters([
+            gitParameter(branch: '', branchFilter: 'origin/(.*)', 
+            defaultValue: 'origin/version/0.1', description: 'Please go ahead  and select the version ', 
+            name: 'release_name', quickFilterEnabled: false, selectedValue: 'NONE', 
+            sortMode: 'NONE', tagFilter: 'origin/(.*)', type: 'PT_BRANCH', useRepository: 'https://github.com:azymberdi/Jenkins-Terraform-Instance.git')
+            ])
+            ])
    
     environment {
         TF_HOME = tool('terraform-0.11.8')
