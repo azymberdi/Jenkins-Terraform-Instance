@@ -17,7 +17,13 @@ pipeline {
         SECRET_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
     stages {
-            stage('TerraformInit'){
+            
+        stage('PullSCM'){
+            git branch: "${params.release_name}, url: 'https://github.com:azymberdi/Jenkins-Terraform-Instance.git'
+                }
+        
+        
+        stage('TerraformInit'){
             steps {
                 dir('jenkins-terraform-pipeline/ec2_pipeline/'){
                     sh "terraform init -input=false"
