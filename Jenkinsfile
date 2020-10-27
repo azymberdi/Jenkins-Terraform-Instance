@@ -50,4 +50,10 @@ pipeline {
                    if(apply){
                            unstash "terraform-plan"
                            sh 'terraform apply terraform.tfplan'
+                   }
+               }
+           }
+       }
+   }
+}
 
